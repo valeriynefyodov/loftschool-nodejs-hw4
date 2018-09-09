@@ -1,0 +1,30 @@
+{
+  "name": "loftschool-nodejs-hw4",
+  "version": "1.0.0",
+  "description": "Homework #4 for Loftschool's Node.js course",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valeriynefyodov/loftschool-nodejs-hw4.git"
+  },
+  "author": "Valeriy Nefyodov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/valeriynefyodov/loftschool-nodejs-hw4/issues"
+  },
+  "homepage": "https://github.com/valeriynefyodov/loftschool-nodejs-hw4#readme",
+  "dependencies": {
+    "koa": "^2.5.2",
+    "koa-body": "^4.0.4",
+    "koa-connect-flash": "^0.1.2",
+    "koa-generic-session": "^2.0.1",
+    "koa-pug": "^3.0.0-2",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "lowdb": "^1.0.0",
+    "pug": "^2.0.3"
+  }
+}
