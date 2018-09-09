@@ -26,5 +26,8 @@
     "koa-static": "^5.0.0",
     "lowdb": "^1.0.0",
     "pug": "^2.0.3"
+  },
+  "devDependencies": {
+    "eslint-config-standart": "^0.2.0"
   }
 }
