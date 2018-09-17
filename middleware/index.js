@@ -4,6 +4,7 @@ const flash = require('koa-connect-flash');
 const Pug = require('koa-pug');
 const koaBody = require('koa-body');
 const router = require('../router');
+const { UPLOAD_PATH } = require('../config');
 
 function applyMiddlewares(app) {
   // static files middleware
@@ -17,7 +18,13 @@ function applyMiddlewares(app) {
   app.use(flash());
 
   // body parser middleware
-  app.use(koaBody());
+  app.use(koaBody({ 
+    multipart: true,
+    formidable: {
+      uploadDir: UPLOAD_PATH,
+      keepExtensions: true
+    }
+  }));
 
   // router middleware
   app.use(router.routes());

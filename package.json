@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/valeriynefyodov/loftschool-nodejs-hw4#readme",
   "dependencies": {
-    "koa": "^2.5.2",
+    "koa": "^2.5.3",
     "koa-body": "^4.0.4",
     "koa-connect-flash": "^0.1.2",
     "koa-generic-session": "^2.0.1",

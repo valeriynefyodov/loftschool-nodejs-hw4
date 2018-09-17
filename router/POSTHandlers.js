@@ -1,3 +1,5 @@
+const path = require('path');
+const { PRODUCTS_IMG_PATH } = require('../config');
 const db = require('../db-controller');
 
 db.init();
@@ -31,7 +33,14 @@ function registerPOSTHandlers(router) {
       return ctx.redirect('/login');
     }
 
-    db.saveUser({ email, password });
+    if (!db.checkUser({ email, password })) {
+      ctx.flash('loginStatus', 'Неверный email и/или пароль');
+
+      ctx.response.status = 400;
+      return ctx.redirect('/login');
+    }
+
+    db.authUser({ email, password });
 
     ctx.flash('loginStatus', 'Вы успешно авторизированы!');
 
@@ -57,7 +66,8 @@ function registerPOSTHandlers(router) {
   });
 
   router.post('/admin/upload', async (ctx, next) => {
-    const { photo, name, price } = ctx.request.body;
+    const { name, price } = ctx.request.body;
+    const { photo } = ctx.request.files;
 
     if (!photo || !name || !price) {
       ctx.flash('uploadStatus', 'Пожалуйста, заполните все поля.');
@@ -66,7 +76,11 @@ function registerPOSTHandlers(router) {
       return ctx.redirect('/admin');
     }
 
-    db.addProduct({ photo, name, price });
+    db.addProduct({ 
+      src: `${PRODUCTS_IMG_PATH}/${path.basename(photo.path)}`,
+      name, 
+      price
+    });
     
     ctx.flash('uploadStatus', 'Продукт успешно сохранён!');
 
